@@ -1,16 +1,23 @@
-# This is a sample Python script.
+import caesar_cipher
+import custom_cipher
+import secrets
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+caesar_key = 17
+custom_key = 7
 
+messages = [
+    secrets.text, secrets.location, secrets.password, secrets.passage
+]
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+for message in messages:
+    encrypted = caesar_cipher.encrypt(message, caesar_key)
+    print(f"Caesar encrypted message: {encrypted}")
 
-#simple change to show colin.
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    decrypted = caesar_cipher.decrypt(encrypted, caesar_key)
+    print(f"Caesar decrypted message: {decrypted}\n")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    encrypted = custom_cipher.encrypt(message, custom_key)
+    print(f"Custom encrypted message: {encrypted}")
+
+    decrypted = custom_cipher.decrypt(encrypted, custom_key)
+    print(f"Custom decrypted message: {decrypted}\n")
